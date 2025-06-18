@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10, user-scalable=yes">
+  <title>Présentation TSLA</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: sans-serif;
+    }
+
+    #slider {
+      text-align: center;
+    }
+
+    #videos {
+      display: flex;
+      align-items: center;
+    }
+
+    #videos a {
+      color: #fff;
+      text-decoration: none;
+      background-color: #9c9c9c;
+      padding: 5px 20px;
+      border-radius: 5px;
+    }
+
+    img {
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      margin: 10px;
+    }
+
+    button {
+      font-size: 1.5em;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .counter {
+      text-align: center;
+      margin: 10px;
+      color: #ccc;
+    }
+
+    @media (max-width: 1150px) {
+      img {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 468px) {
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      button {
+        font-size: 1em;
+        padding: 5px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="controls">
+    <button onclick="prevSlide()">⟨</button>
+    <div id="videos">
+      <a href="videos.html" target="_blank" class="video-button">vidéos</a>
+    </div>
+    <button onclick="nextSlide()">⟩</button>
+  </div>
+  <div id="slider">
+    <img id="slide" src="slides/slide1.jpg" alt="Diapositive 1">
+  </div>
+  <div class="counter" id="counter">1 / 194</div>
+
+  <script>
+    const totalSlides = 194;
+    let currentSlide = 1;
+    const img = document.getElementById('slide');
+    const counter = document.getElementById('counter');
+
+    function updateSlide() {
+      img.src = `slides/slide${currentSlide}.jpg`;
+      counter.textContent = `${currentSlide} / ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowRight") nextSlide();
+      if (event.key === "ArrowLeft") prevSlide();
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const slider = document.getElementById('slider');
+
+    slider.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    slider.addEventListener('touchend', function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleGesture();
+    });
+
+    function handleGesture() {
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 50) {
+        if (diff < 0) nextSlide();
+        else prevSlide();
+      }
+    }
+  </script>
+</body>
+
+</html>

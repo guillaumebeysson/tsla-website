@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Vidéos</title>
+    <style>
+        body {
+            background: #111;
+            color: #fff;
+            font-family: sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #222;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .caption {
+            font-size: 1.3rem;
+            text-align: center;
+            color: #fafafa;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Galerie Vidéos</h1>
+    <div class="gallery">
+        <div class="video-item">
+            <div class="caption">confusions b.d</div>
+            <video src="videos/confusions b.d.mp4" controls></video>
+        </div>
+        <div class="video-item">
+            <div class="caption">confusions u.n</div>
+            <video src="videos/confusions u.n.mp4" controls></video>
+        </div>
+        <div class="video-item">
+            <div class="caption">lab réussi</div>
+            <video src="videos/lab réussi.mp4" controls></video>
+        </div>
+        <div class="video-item">
+            <div class="caption">laby alpha</div>
+            <video src="videos/laby alpha.mp4" controls></video>
+        </div>
+        <div class="video-item">
+            <div class="caption">points à joindre</div>
+            <video src="videos/points à joindre.mp4" controls></video>
+        </div>
+        <div class="video-item">
+            <div class="caption">PPS</div>
+            <video src="videos/PPS.mp4" controls></video>
+        </div>
+        <div class="video-item">
+            <div class="caption">R.A.M.P.</div>
+            <video src="videos/R.A.M.P..mp4" controls></video>
+        </div>
+    </div>
+</body>
+
+
+</html>
